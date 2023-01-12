@@ -26,7 +26,7 @@ module.exports = class Avatar extends Command {
         .setColor("RED")
         .addField(`🧊 | Aqui está a skin de ${opt}!`,
          ` - Clique [AQUI](https://mc-heads.net/head/${opt}) para baixar.`)
-        .setImage(`https://mc-heads.net/head/` + opt);
+        .setImage(`https://mc-heads.net/head/mictazz01`);
 
             await interaction.reply({ content: 'Aqui está a skin desejada.', ephemeral: true });
 
