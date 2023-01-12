@@ -24,8 +24,8 @@ module.exports = class Avatar extends Command {
         const Embed = new MessageEmbed()
 
             .setColor("RED")
-            .setTitle(`Aqui está a skin de ${opt}!`)
-            .setDescription(`> 🧊・Clique [AQUI](https://mc-heads.net/body/${opt}) para baixar.`)
+            .addField(`🧊 | Aqui está a skin de ${opt}!`,
+             ` - Clique [AQUI](https://mc-heads.net/body/${opt}) para baixar.`)
             .setImage(`https://mc-heads.net/body/` + opt);
 
             await interaction.reply({ content: 'Aqui está a skin desejada.', ephemeral: true });
