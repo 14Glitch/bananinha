@@ -27,7 +27,7 @@ module.exports = class Avatar extends Command {
                 return interaction.reply({
                     embeds: [
                         {
-                            title: `Aqui está o avatar de ${member.user.username}! 🖼️`,
+                            title: `Aqui está o avatar de ${member.user.username}!a  🖼️`,
                             color: 'RED',
                             image: {
                                 url: member.user.displayAvatarURL({ dynamic: true, size: 4096 })
