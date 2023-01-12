@@ -21,16 +21,30 @@ module.exports = class Avatar extends Command {
     run = async(interaction) => {
         let opt = interaction.options.getString("nick");
 
-        const Embed = new MessageEmbed()
+        return interaction.reply({
+            ephemeral: true,
+            embeds: [
+                {
+                    fields: [
+                        {
+                            name: `🖼️ | Aqui está a cabeça de ${opt}`,
+                            value: ` - Clique [AQUI](https://mc-heads.net/head/${opt}) para baixar.`,
+                        }
+                    ],
+                    color: 'RANDOM',
+                    image: {
+                        url: `https://mc-heads.net/head/${opt}`
+                    },
+                    timestamp: new Date(),
+                    footer: {
+                        text: interaction.guild.name,
+                        icon_url: interaction.guild.iconURL({ dynamic: true })
+                    }
+                }
+    
+            ]
+        })
 
-        .setColor("RED")
-        .addField(`🧊 | Aqui está a skin de ${opt}!`,
-         ` - Clique [AQUI](https://mc-heads.net/head/${opt}) para baixar.`)
-        .setImage(`https://mc-heads.net/head/mictazz01`);
-
-            await interaction.reply({ content: 'Aqui está a skin desejada.', ephemeral: true });
-
-            interaction.channel.send({ embeds: [Embed]});
-            
+        
     };
 };
