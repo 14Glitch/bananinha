@@ -1,6 +1,7 @@
 const Command = require("../../structures/Command");
 
-const { MessageEmbed, MessageActionRow, MessageSelectMenu } = require("discord.js");
+const { Discord, MessageEmbed, MessageButton, MessageActionRow, MessageSelectMenu, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events } = require("discord.js");
+
 
 module.exports = class Avatar extends Command {
     constructor(client) {
@@ -21,6 +22,16 @@ module.exports = class Avatar extends Command {
     run = async(interaction) => {
         let opt = interaction.options.getString("nick");
 
+        const row = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+                .setLabel('Download')
+                .setURL('https://mc.heads.net/skin/' + opt)
+                .setStyle('LINK'),
+        );
+
+        
+
         return interaction.reply({
             ephemeral: true,
             embeds: [
@@ -28,7 +39,7 @@ module.exports = class Avatar extends Command {
                     fields: [
                         {
                             name: `🖼️ | Aqui está a cabeça de ${opt}`,
-                            value: ` - Clique [AQUI](https://mc-heads.net/head/${opt}) para baixar.`,
+                            value: ` - Clique [AQUI](https://mc-heads.net/head/${opt}) para baixar a imagem.`,
                         }
                     ],
                     color: 'RANDOM',
@@ -37,14 +48,16 @@ module.exports = class Avatar extends Command {
                     },
                     timestamp: new Date(),
                     footer: {
-                        text: interaction.guild.name,
+                        text: 'Clique no botão para baixar a skin!',
                         icon_url: interaction.guild.iconURL({ dynamic: true })
+                    
                     }
                 }
     
-            ]
+            ],
+            components: [row]
+            
         })
-
-        
+            
     };
 };

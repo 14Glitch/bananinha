@@ -1,6 +1,6 @@
 const Command = require("../../structures/Command");
 
-const { MessageEmbed, MessageActionRow, MessageSelectMenu } = require("discord.js");
+const { Discord, MessageEmbed, MessageButton, MessageActionRow, MessageSelectMenu, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events } = require("discord.js");
 
 module.exports = class Avatar extends Command {
     constructor(client) {
@@ -21,16 +21,42 @@ module.exports = class Avatar extends Command {
     run = async(interaction) => {
         let opt = interaction.options.getString("nick");
 
-        const Embed = new MessageEmbed()
+        const row = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+                .setLabel('Download')
+                .setURL('https://mc.heads.net/skin/' + opt)
+                .setStyle('LINK'),
+        );
 
-            .setColor("RED")
-            .addField(`🧊 | Aqui está a skin de ${opt}!`,
-             ` - Clique [AQUI](https://mc-heads.net/body/${opt}) para baixar.`)
-            .setImage(`https://mc-heads.net/body/` + opt);
+        
 
-            await interaction.reply({ content: 'Aqui está a skin desejada.', ephemeral: true });
-
-            interaction.channel.send({ embeds: [Embed]});
+        return interaction.reply({
+            ephemeral: true,
+            embeds: [
+                {
+                    fields: [
+                        {
+                            name: `🖼️ | Aqui está a cabeça de ${opt}`,
+                            value: ` - Clique [AQUI](https://mc-heads.net/body/${opt}) para baixar a imagem.`,
+                        }
+                    ],
+                    color: 'RANDOM',
+                    image: {
+                        url: `https://mc-heads.net/body/${opt}`
+                    },
+                    timestamp: new Date(),
+                    footer: {
+                        text: 'Clique no botão para baixar a skin!',
+                        icon_url: interaction.guild.iconURL({ dynamic: true })
+                    
+                    }
+                }
+    
+            ],
+            components: [row]
+            
+        })
             
     };
 };
