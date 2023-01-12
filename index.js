@@ -45,7 +45,7 @@ client.on("ready", () => {
 
     let activities = [
       `${client.guilds.cache.size} servidores!`,
-      `${client.users.cache.size} Membros! seu cu`
+      `${client.users.cache.size} Membros!`
     ],
       i = 0;
 
