@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const Discord = require('discord.js');
 
@@ -37,7 +37,7 @@ client.on('messageCreate', function (message) {
 })
 
 
-client.on("ready", () => {
+client.on("ready", () => { 
     let activitie = [
         `${client.guilds.cache.size} servidor!`,
         `${client.users.cache.size} Membros!`
