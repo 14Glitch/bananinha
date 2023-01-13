@@ -2,6 +2,8 @@ require('dotenv').config();
 
 const Discord = require('discord.js');
 
+const moment = require('moment');
+
 const Client = require('./src/structures/Client')
 
 const client = new Client({
@@ -26,8 +28,10 @@ client.once('ready', function () {
       const Glitch = client.users.cache.get('777941752794447903');
       const Derkz = client.users.cache.get('1059885904522653778');
 
-      Glitch.send(`> Olá <@777941752794447903>, o <@1059937554050318447> foi iniciado com sucesso!`);
-      Derkz.send(`> Olá <@1059885904522653778>, o <@1059937554050318447> foi iniciado com sucesso!`);
+      const currentTime = moment().format('HH:mm:ss');
+
+      Glitch.send('> Olá <@777941752794447903>, o' + `<@1059937554050318447>` + 'foi iniciado com sucesso!' + '```' + `🕐 Horário: ${currentTime}` + '```');
+      Derkz.send('> Olá <@1059885904522653778>, o' + `<@1059937554050318447>` + 'foi iniciado com sucesso!' + '```' + `🕐 Horário: ${currentTime}` + '```');
 })
 client.on('messageCreate', function (message) {
     if (message.content === "Oi")
