@@ -37,7 +37,7 @@ module.exports = class Avatar extends Command {
                 {
                     fields: [
                         {
-                            name: `🖼️ | Aqui está a cabeça de ${opt}`,
+                            name: `🖼️ | @@Aqui está a cabeça de ${opt}`,
                             value: ` - Clique [AQUI](https://mc-heads.net/body/${opt}) para baixar a imagem.`,
                         }
                     ],
