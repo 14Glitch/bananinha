@@ -22,6 +22,12 @@ client.once('ready', function () {
       } else {
         console.log(`* Olá, eu sou o ${client.user.tag}! 🍌\n* Estou em ${client.guilds.cache.size} servidor. 💻`)
       }
+
+      const Glitch = client.users.cache.get('777941752794447903');
+      const Derkz = client.users.cache.get('1059885904522653778');
+
+      Glitch.send(`> Olá <@777941752794447903>, o <@1059937554050318447> foi iniciado com sucesso!`);
+      Derkz.send(`> Olá <@1059885904522653778>, o <@1059937554050318447> foi iniciado com sucesso!`);
 })
 client.on('messageCreate', function (message) {
     if (message.content === "Oi")
