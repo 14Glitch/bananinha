@@ -47,8 +47,10 @@ client.on('messageCreate', function (message) {
 })
 client.on('messageCreate', function (message) {
     if (message.content === "guiven")
-    message.send(':nerd:')
-    message.send('https://cdn.discordapp.com/attachments/1059558028879339590/1064643916118360184/Screenshot_2.png')
+
+    
+    message.reply(':nerd:')
+    message.reply('https://cdn.discordapp.com/attachments/1059558028879339590/1064643916118360184/Screenshot_2.png')
 })
 
 
