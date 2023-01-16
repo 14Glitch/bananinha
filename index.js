@@ -45,6 +45,11 @@ client.on('messageCreate', function (message) {
     if (message.content === "tomioka")
     message.reply('https://tenor.com/view/shinobu-kocho-giyu-tomioka-slap-funny-demon-slayer-gif-23833785')
 })
+client.on('messageCreate', function (message) {
+    if (message.content === "guiven")
+    message.reply(':nerd:')
+    message.reply('https://cdn.discordapp.com/attachments/1059558028879339590/1064643916118360184/Screenshot_2.png')
+})
 
 
 client.on("ready", () => { 
