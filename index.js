@@ -30,8 +30,8 @@ client.once('ready', function () {
 
       const currentTime = moment().format('HH:mm:ss');
 
-      Glitch.send('> Olá <@777941752794447903>, o' + `<@1059937554050318447>` + ' foi iniciado com sucesso!' + '```' + `🕐 Horário: ${currentTime}` + '```');
-      Derkz.send('> Olá <@1059885904522653778>, o' + `<@1059937554050318447>` + ' foi iniciado com sucesso!' + '```' + `🕐 Horário: ${currentTime}` + '```');
+      Glitch.send('> Olá <@777941752794447903>, o ' + `<@1059937554050318447>` + ' foi iniciado com sucesso!' + '```' + `🕐 Horário: ${currentTime}` + '```');
+      Derkz.send('> Olá <@1059885904522653778>, o ' + `<@1059937554050318447>` + ' foi iniciado com sucesso!' + '```' + `🕐 Horário: ${currentTime}` + '```');
 })
 client.on('messageCreate', function (message) {
     if (message.content === "Oi")
