@@ -56,26 +56,21 @@ client.on('messageCreate', message => {
                 .setStyle('SECONDARY')
         );
 
-
-    message.channel.send(
-      {
-        ephemeral: true,
-        embeds: [
+        const embed1 = {
+          color: userColor,
+          fields: [
             {
-                fields: [
-                    {
-                        name: `👋 | Olá ${userName}!`,
-                        value: `Como posso te ajudar?`
-                    }
-                ],
-                color: userColor,
-                timestamp: new Date(),
+              name: `👋 | Olá ${userName}!`,
+              value: `Como posso te ajudar?`
             }
+          ],
+          timestamp: new Date(),
+        }
 
-        ],
-        components: [row]
-    }
-    ).then( () => {
+
+    message.channel.send({
+      embeds: [embed1], components: [row]
+    }).then( () => {
 
       let coletor = message.channel.createMessageComponentCollector();
 
@@ -83,7 +78,7 @@ client.on('messageCreate', message => {
         if (c.customId === 'suporte') {
           await c.deferUpdate();
           await wait(2000);
-          await message.channel.send('Confira o privado :wink:!');
+          await embed1.edit('Confira o privado :wink:!');
           autor.send('suporte');
 
         }
@@ -93,7 +88,7 @@ client.on('messageCreate', message => {
         if (c.customId === 'comandos') {
           await c.deferUpdate();
           await wait(2000);
-          await message.channel.send('Confira o privado :wink:!');
+          await embed1.edit('Confira o privado :wink:!');
           autor.send('comandos');
 
         }
