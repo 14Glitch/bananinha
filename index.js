@@ -5,6 +5,7 @@ const { Discord, MessageEmbed, MessageButton, MessageActionRow, MessageSelectMen
 
 
 const moment = require('moment');
+const wait = require('node:timers/promises').setTimeout;
 
 const Client = require('./src/structures/Client')
 
@@ -42,16 +43,17 @@ client.on('messageCreate', message => {
   if (message.content === "<@1059937554050318447>") {
     let userColor = message.member.displayHexColor;
     let userName = message.author.username;
+    let autor = message.member;
     const row = new MessageActionRow()
         .addComponents(
             new MessageButton()
-                .setCustomId('success')
-                .setLabel('Sim')
-                .setStyle('SUCCESS'),
+                .setCustomId('suporte')
+                .setLabel('❓')
+                .setStyle('SECONDARY'),
             new MessageButton()
-                .setCustomId('danger')
-                .setLabel('Não')
-                .setStyle('DANGER')
+                .setCustomId('comandos')
+                .setLabel('📂')
+                .setStyle('SECONDARY')
         );
 
 
@@ -62,8 +64,8 @@ client.on('messageCreate', message => {
             {
                 fields: [
                     {
-                        name: `👋\n`,
-                        value: `Olá, ${userName}. \n Gostaria de ver minha lista de comandos?`
+                        name: `👋 | Olá ${userName}!`,
+                        value: `Como posso te ajudar?`
                     }
                 ],
                 color: userColor,
@@ -73,7 +75,36 @@ client.on('messageCreate', message => {
         ],
         components: [row]
     }
-    );
+    ).then( () => {
+
+      let coletor = message.channel.createMessageComponentCollector();
+
+      coletor.on('collect', async c => {
+        if (c.customId === 'suporte') {
+          await c.deferUpdate();
+          await wait(2000);
+          await message.channel.send('Confira o privado :wink:!');
+          autor.send('suporte');
+
+        }
+        
+      })
+      coletor.on('collect', async c => {
+        if (c.customId === 'comandos') {
+          await c.deferUpdate();
+          await wait(2000);
+          await message.channel.send('Confira o privado :wink:!');
+          autor.send('comandos');
+
+        }
+        
+      })
+      
+
+        
+
+
+    });
   }
 
 });

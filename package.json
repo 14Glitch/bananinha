@@ -18,6 +18,8 @@
     "dotenv": "^10.0.0",
     "erela.js": "^2.3.3",
     "moment": "^2.29.4",
-    "mongoose": "^6.8.2"
+    "mongoose": "^6.8.2",
+    "timers-promises": "^1.0.1",
+    "wait": "^0.4.2"
   }
 }
